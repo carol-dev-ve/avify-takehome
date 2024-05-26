@@ -30,7 +30,7 @@ const Card: React.FC<CardProps> = ({ title, number , label }) => {
     <div className ={` ${Object.keys(backgroundCard).includes(label)? backgroundCard[label] : 'bg-white'} shadow-md rounded-lg p-6 flex flex-col items-center justify-center`}>
       <div className="w-[100%] flex justify-between">
         <div className="text-gray-500 text-sm text-left uppercase">{title}</div>
-        <div>{Object.keys(mappingIcon).includes(title) ? mappingIcon[title] : mappingIcon} </div>
+        <div>{Object.keys(mappingIcon).includes(title) ? mappingIcon[title] : mappingIcon.other} </div>
       </div>
       <div className="text-3xl font-bold">{number}%</div>
 
