@@ -11,6 +11,7 @@ import {
 import { Bar } from "react-chartjs-2";
 
 import { Generationmix } from '../../interfaces/CarbonDataResponse';
+import useChartData from '../../hooks/useChartData';
 
 ChartJS.register(
     CategoryScale,
@@ -26,16 +27,7 @@ interface Props {
 }
 
 const BarChart: React.FC<Props> = ({ dataGraph }: Props) => {
-    const [chartData, setChartData] = useState<{ labels: string[]; data: number[] }>({ labels: [], data: [] });
-
-    useEffect(() => {
-        // Extracting labels and data from dataGraph
-        const labels = dataGraph.map(item => item.fuel);
-        const data = dataGraph.map(item => item.perc);
-
-        // Update chart data state
-        setChartData({ labels, data });
-    }, [dataGraph]);
+    const chartData = useChartData({ dataGraph })
 
     return (
         <div className="w-full flex justify-center">

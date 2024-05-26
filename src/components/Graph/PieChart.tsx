@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, Title } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import { Generationmix } from '../../interfaces/CarbonDataResponse';
+import useChartData from '../../hooks/useChartData';
 
 ChartJS.register(ArcElement, Tooltip, Legend, Title);
 
@@ -9,30 +10,19 @@ interface Props {
     dataGraph: Generationmix[]
 }
 
-interface DataForChart {
-    labels: string[],
-    data: string[]
-}
-
 const PieChart = ({ dataGraph }: Props) => {
-    const [dataSummary, setDataSummary] = useState<DataForChart>({})
-    useEffect(() => {
-        // Extracting labels and data from dataGraph
-        const labels = dataGraph.map(item => item.fuel);
-        const data = dataGraph.map(item => item.perc);
 
-        // Update chart data state
-        setDataSummary({ labels, data });
-    }, [dataGraph]);
+    const chartData = useChartData({ dataGraph })
+
     return (
         <div className="w-full flex justify-center">
             <Pie
                 data={{
-                    labels: dataSummary.labels,
+                    labels: chartData.labels,
                     datasets: [{
                         label: `Graph for UK Energy`,
                         backgroundColor: ['#3366cc', '#990099', '#109618', '#dc3912', '#ff9900', '#3366cc', '#990099', '#109618', '#dc3912', '#ff9900'],
-                        data: dataSummary.data
+                        data: chartData.data
                     }
                     ],
                 }}
