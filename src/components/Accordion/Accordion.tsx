@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 
-const Accordion: React.FC<{ title: string }> = ({ title, children }) => {
+interface AccordionProps {
+  title: string;
+  children: React.ReactNode;
+}
+
+const Accordion: React.FC<AccordionProps> = ({ title, children }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (

@@ -5,7 +5,7 @@ import { Generationmix } from '../../interfaces/CarbonDataResponse';
 interface Props {
   cardsData: Generationmix[]
 }
-const CardsLayout: React.FC = ({ cardsData }: Props) => {
+const CardsLayout: React.FC<Props> = ({ cardsData }: Props) => {
   return (
     <div className=" bg-gray-100 p-8">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">

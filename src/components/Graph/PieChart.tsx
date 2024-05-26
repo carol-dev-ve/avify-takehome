@@ -15,7 +15,7 @@ const PieChart = ({ dataGraph }: Props) => {
     const chartData = useChartData({ dataGraph })
 
     return (
-        <div className="w-full flex justify-center">
+        <div className="w-full flex justify-center"  data-testid="bar-chart">
             <Pie
                 data={{
                     labels: chartData.labels,
